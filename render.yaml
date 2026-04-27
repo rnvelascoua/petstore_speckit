@@ -1,11 +1,11 @@
 services:
-  # ── Backend ─────────────────────────────────────────────────────────────────
+  # ── Backend (Docker) ─────────────────────────────────────────────────────────
   - type: web
     name: petstore-backend
-    runtime: java
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
     plan: free
-    buildCommand: cd backend && mvn clean package -DskipTests
-    startCommand: java -jar backend/target/petstore-backend-0.0.1-SNAPSHOT.jar
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -16,13 +16,13 @@ services:
       - key: PORT
         value: "8080"
 
-  # ── Frontend ─────────────────────────────────────────────────────────────────
+  # ── Frontend (Static) ────────────────────────────────────────────────────────
   - type: web
     name: petstore-frontend
-    runtime: static
-    plan: free
+    env: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
+    plan: free
     envVars:
       - key: VITE_API_BASE_URL
         value: https://petstore-backend.onrender.com
