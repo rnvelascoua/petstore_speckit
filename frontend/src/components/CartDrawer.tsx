@@ -1,6 +1,6 @@
 import {
   Drawer, Box, Typography, IconButton, Divider, Button,
-  List, ListItem, Chip, Badge
+  List, ListItem, Chip
 } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import DeleteIcon from '@mui/icons-material/Delete'

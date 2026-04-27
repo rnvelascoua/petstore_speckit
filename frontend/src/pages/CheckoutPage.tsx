@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react'
 import {
   Container, AppBar, Toolbar, Typography, Box, Grid, TextField,
-  Button, Card, CardContent, Divider, CircularProgress, Chip,
-  FormHelperText
+  Button, Card, CardContent, Divider, CircularProgress
 } from '@mui/material'
 import { useNavigate, Link as RouterLink } from 'react-router-dom'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 import Link from '@mui/material/Link'
 import { useCart } from '../context/CartContext'
 import CartButton from '../components/CartButton'
-import CartDrawer from '../components/CartDrawer'
 
 const PLACEHOLDER = '/placeholder-pet.svg'
 const TAX_RATE = 0.08
