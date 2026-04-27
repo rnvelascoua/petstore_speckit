@@ -1,0 +1,27 @@
+# Backend
+target/
+*.class
+*.jar
+*.war
+*.ear
+.settings/
+.project
+.classpath
+.idea/
+*.iml
+
+# Frontend
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env*.local
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
