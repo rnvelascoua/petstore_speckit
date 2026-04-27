@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/petstore
-    username: petstore_user
-    password: petstore_pass
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/petstore}
+    username: ${DATABASE_USERNAME:petstore_user}
+    password: ${DATABASE_PASSWORD:petstore_pass}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -17,10 +17,14 @@ spring:
     locations: classpath:db/migration
 
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 springdoc:
   api-docs:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000}
