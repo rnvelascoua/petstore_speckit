@@ -6,15 +6,26 @@ services:
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
     envVars:
-      # Set this in the Render dashboard after creating your free PostgreSQL at:
-      # https://supabase.com  OR  https://neon.tech
-      # Format: jdbc:postgresql://<host>/<db>?user=<user>&password=<pass>
-      - key: DATABASE_URL
-        sync: false
+      - key: DB_HOST
+        fromDatabase:
+          name: petstore-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: petstore-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: petstore-db
+          property: database
       - key: DATABASE_USERNAME
-        sync: false
+        fromDatabase:
+          name: petstore-db
+          property: user
       - key: DATABASE_PASSWORD
-        sync: false
+        fromDatabase:
+          name: petstore-db
+          property: password
       - key: CORS_ALLOWED_ORIGINS
         value: https://petstore-frontend.onrender.com
       - key: PORT
@@ -29,3 +40,8 @@ services:
     envVars:
       - key: VITE_API_BASE_URL
         value: https://petstore-backend.onrender.com
+
+databases:
+  - name: petstore-db
+    plan: free
+    databaseName: petstore
